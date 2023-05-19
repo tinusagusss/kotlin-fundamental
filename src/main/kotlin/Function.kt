@@ -30,6 +30,20 @@ fun main() {
     }
 
     println(lambdaExpression("Lambda Expression"))
+
+    text = highOrderFunction("higher order") { it.lowercase() }
+    println(text)
+
+    val anonymousFunction = fun(value: String): String{
+        return if (value.isNotEmpty()){
+            "This is $value"
+        } else{
+            "Please input character"
+        }
+    }
+
+    text = anonymousFunction("Function Anonymous")
+    println(text)
 }
 
 fun sayHello() {
@@ -70,3 +84,9 @@ fun recursive(value: Int): Int {
         else -> value * recursive(value - 1)
     }
 }
+
+fun highOrderFunction(name: String, caseTo: (String) -> String): String{
+    val nameCaseTo  = caseTo(name)
+    return "This is Function $nameCaseTo"
+}
+
